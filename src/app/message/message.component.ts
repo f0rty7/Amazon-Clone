@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  constructor(private data: DataService) { }
+  data: any
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
