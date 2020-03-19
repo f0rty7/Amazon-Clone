@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 
+// Database schema
 const userSchema = new Schema({
   email: { type: String , unique: true, lowercase: true},
   name: String ,
@@ -38,7 +39,7 @@ userSchema.methods.comparePassword = function(password){
   return bcrypt.compareSync(password, this.password);
 }
 
-// For generating the avatar
+// For generating the avatar automatically
 userSchema.methods.gravatar = function(size){
   if(!size) size = 200;
   if(!this.email) return 'https://www.gravatar.com/avatar/?s' + size + '&d=retro';
