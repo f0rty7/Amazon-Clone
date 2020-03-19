@@ -12,7 +12,7 @@ const cors = require('cors');
 // Database connection
 const dbUrl = 'mongodb://localhost:27017/Amazon';
 
-mongoose.connect(dbUrl, { useNewUrlParser: true , useUnifiedTopology: true}, error => {
+mongoose.connect(dbUrl, { useNewUrlParser: true , useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }, error => {
     if (error) {
         console.log("Connection to Databse failed");
         console.log(error);
@@ -30,9 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/', function (req, res) {
-    res.send('Hello World');
-})
+const userRoutes = require('./routes/account');
+app.use('/api/accounts', userRoutes);
 
 app.listen(port, () => {
     console.log("Server running on port ==> " + port);
