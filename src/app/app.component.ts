@@ -28,7 +28,7 @@ export class AppComponent {
   logout() {
     this.dataService.user = {};
     localStorage.clear();
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
   search() {

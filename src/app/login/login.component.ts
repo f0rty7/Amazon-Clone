@@ -33,28 +33,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  async login(){
+  async login() {
     this.btnDisabled = true;
     let loginUrl = "http://localhost:4000/api/accounts/login";
-    try{
-      if (this.validate()){
-        const data = await this.apiService.post(
-          loginUrl,
-          {
-            email: this.email,
-            password: this.password,
-          }
-        );
+    try {
+      if (this.validate()) {
+        const data = await this.apiService.post(loginUrl, {
+          email: this.email,
+          password: this.password
+        });
         if (data["success"]) {
           localStorage.setItem("token", JSON.stringify(data["token"]));
-          this.router.navigate(['/']);
+          this.router.navigate(["/"]);
         } else {
           this.dataService.error(data["message"]);
         }
       }
-    }
-    catch(error){
-      this.dataService.error(error['message']);
+    } catch (error) {
+      this.dataService.error(error["message"]);
     }
     this.btnDisabled = false;
   }

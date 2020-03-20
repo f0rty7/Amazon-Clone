@@ -1,3 +1,4 @@
+import { AuthGaurdService } from './auth-gaurd.service';
 import { DataService } from './data.service';
 import { RestApiService } from './rest-api.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,7 +32,8 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     RestApiService,
-    DataService
+    DataService,
+    AuthGaurdService
   ],
   bootstrap: [AppComponent]
 })

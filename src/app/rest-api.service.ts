@@ -13,10 +13,10 @@ export class RestApiService {
   }
 
   get(url: string) {
-    return this.http.get(url, { headers: this.getHeaders() });
+    return this.http.get(url, { headers: this.getHeaders() }).toPromise();
   }
 
   post(url: string, data: any) {
-    return this.http.post(url, data, { headers: this.getHeaders() });
+    return this.http.post(url, data, { headers: this.getHeaders() }).toPromise();
   }
 }

@@ -1,3 +1,4 @@
+import { AuthGaurdService } from './auth-gaurd.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NgModule } from '@angular/core';
@@ -12,17 +13,19 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: '**',
-    redirectTo: ''
-  },
-  {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [AuthGaurdService]
   },
   {
     path: 'login',
-    component: LoginComponent
-  }
+    component: LoginComponent,
+    canActivate: [AuthGaurdService]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  },
 ];
 
 @NgModule({

@@ -5,8 +5,8 @@ import { NavigationStart, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  message: string = '';
-  messageType: string = 'danger';
+  message = '';
+  messageType = 'danger';
 
   user: any;
 
@@ -18,17 +18,17 @@ export class DataService {
     })
   }
 
-  error(message: string){
+  error(message){
     this.messageType = 'danger';
     this.message = message;
   }
 
-  success(message: string){
+  success(message){
     this.messageType = 'success';
     this.message = message;
   }
 
-  warning(message: string){
+  warning(message){
     this.messageType = 'warning';
     this.message = message;
   }
