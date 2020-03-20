@@ -1,3 +1,4 @@
+import { AddressComponent } from './address/address.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGaurdService } from './auth-gaurd.service';
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: SettingsComponent,
+    canActivate: [AuthGaurdService]
+  },
+  {
+    path: 'address',
+    component: AddressComponent,
     canActivate: [AuthGaurdService]
   },
   {
