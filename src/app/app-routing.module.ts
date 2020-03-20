@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { AuthGaurdService } from './auth-gaurd.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGaurdService]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [AuthGaurdService]
   },
   {

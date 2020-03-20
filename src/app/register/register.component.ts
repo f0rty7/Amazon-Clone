@@ -62,6 +62,7 @@ export class RegisterComponent implements OnInit {
         if (data["success"]) {
           localStorage.setItem("token", JSON.stringify(data["token"]));
           this.dataService.success("Registeration Successful");
+          await this.dataService.getProfile();
         } else {
           this.dataService.error(data["message"]);
         }
