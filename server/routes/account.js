@@ -67,7 +67,7 @@ router.post("/login", (req, res) => {
       } else {
         var token = jwt.sign(
           {
-            user: user
+            user
           },
           config.secret,
           {
