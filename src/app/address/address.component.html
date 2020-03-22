@@ -1,6 +1,6 @@
 <section class="address">
   <div class="container p-5">
-    <h4 class="display-4">My Account Settings</h4>
+    <h4 class="display-4">My Address Settings</h4>
     <hr>
     <app-message></app-message>
     <div *ngIf="!currentAddress" class="m-auto">
@@ -20,7 +20,7 @@
             <input type="text" name="address2" class="form-control" [(ngModel)]="currentAddress.address2">
           </div>
           <div class="form-group">
-            <label class="form-control-label">City</label>>
+            <label class="form-control-label">City</label>
             <input type="text" name="city" class="form-control" [(ngModel)]="currentAddress.city">
           </div>
           <div class="form-group">
@@ -35,7 +35,7 @@
             <label class="form-control-label">Postal Code</label>
             <input type="text" name="postalCode" class="form-control" [(ngModel)]="currentAddress.postalCode">
           </div>
-          <button class="btn-btn-danger" (click)="updateAddress()" [disabled]="btnDisabled">Update Address</button>
+          <button class="btn btn-danger" (click)="updateAddress()" [disabled]="btnDisabled">Update Address</button>
         </form>
       </div>
     </div>

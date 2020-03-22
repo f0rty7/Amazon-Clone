@@ -25,14 +25,14 @@
             </label>
           </div>
           <div class="form-group">
-            <label class="form-control-label">New Password</label>>
+            <label class="form-control-label">New Password</label>
             <input type="password" name="newPwd" class="form-control" [(ngModel)]="currentSettings.newPwd">
           </div>
           <div class="form-group">
             <label class="form-control-label">Confirm Password</label>
             <input type="password" name="pwdConfirm" class="form-control" [(ngModel)]="currentSettings.pwdConfirm">
           </div>
-          <button class="btn-btn-danger" (click)="update()" [disabled]="btnDisabled">Update</button>
+          <button class="btn btn-danger" (click)="update()" [disabled]="btnDisabled">Update</button>
         </form>
       </div>
     </div>

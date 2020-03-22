@@ -11,7 +11,7 @@ module.exports = function(req, res, next) {
     jwt.verify(token, config.secret, function(error, decoded) {
       // checking the token expiry...if error below code runs
       if (error) {
-        console.log("************************************************");
+        console.log("********************ERROR IS*********************");
         console.log(error);
         res.json({
           success: false,

@@ -31,12 +31,12 @@ const routes: Routes = [
     canActivate: [AuthGaurdService]
   },
   {
-    path: 'profile',
+    path: 'profile/settings',
     component: SettingsComponent,
     canActivate: [AuthGaurdService]
   },
   {
-    path: 'address',
+    path: 'profile/address',
     component: AddressComponent,
     canActivate: [AuthGaurdService]
   },
