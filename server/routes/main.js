@@ -8,7 +8,7 @@ router
     Category.find({}, (err, categories) => {
       res.json({
         success: true,
-        message: 'Successfully got categories',
+        message: 'Successfully got all categories',
         category: categories
       });
     })
