@@ -35,10 +35,11 @@ export class DataService {
   }
 
   async getProfile(){
-    let profileUrl = 'https://localhost:4000/api/accounts/profile'
+    let profileUrl = 'http://localhost:4000/api/accounts/profile'
     try{
       if(localStorage.getItem('token')){
         const data = await this.apiService.get(profileUrl);
+        console.log(data);
         this.user = data['user'];
       }
     }catch(error){

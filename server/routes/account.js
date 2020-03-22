@@ -82,7 +82,6 @@ router.post("/login", (req, res) => {
         });
       }
     }
-    console.log("8888888888888", user);
   });
 });
 
@@ -94,7 +93,7 @@ router
     User.findOne({ _id: req.decoded.user._id }, (error, user) => {
       res.json({
         success: true,
-        message: "Successful",
+        message: "Successfully gathered user information",
         user: user
       });
     });

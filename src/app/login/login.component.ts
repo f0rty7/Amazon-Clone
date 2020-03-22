@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
           password: this.password
         });
         if (data["success"]) {
-          localStorage.setItem("token", JSON.stringify(data["token"]));
+          // localStorage.setItem('token', JSON.stringify(data['token']));
+          localStorage.setItem('token', data['token']);
           await this.dataService.getProfile();
           this.router.navigate(["/"]);
         } else {

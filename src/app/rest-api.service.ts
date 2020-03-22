@@ -8,7 +8,7 @@ export class RestApiService {
   constructor(private http: HttpClient) {}
 
   getHeaders() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     return token ? new HttpHeaders().set("Authorization", token) : null;
   }
 

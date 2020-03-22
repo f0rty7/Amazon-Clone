@@ -20,7 +20,7 @@ export class AddressComponent implements OnInit {
   data = this.dataService;
 
   async ngOnInit(){
-    let addressUrl = 'https://localhost:4000/api/accounts/address';
+    let addressUrl = 'http://localhost:4000/api/accounts/address';
     try {
       const data = await this.apiService.get( addressUrl );
       if( JSON.stringify(data['address'] === '{}' && this.data.message === '')){
@@ -34,7 +34,7 @@ export class AddressComponent implements OnInit {
 
   async updateAddress() {
     this.btnDisabled = true;
-    let addressUrl = 'https://localhost:4000/api/accounts/address';
+    let addressUrl = 'http://localhost:4000/api/accounts/address';
     try{
       const data = await this.apiService.post(
         addressUrl,

@@ -18,7 +18,7 @@ export class AppComponent {
   data = this.dataService;
 
   get token() {
-    return localStorage.getItem("token");
+    return localStorage.getItem('token');
   }
 
   collapse() {
