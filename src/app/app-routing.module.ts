@@ -1,3 +1,4 @@
+import { CategoriesComponent } from './categories/categories.component';
 import { AddressComponent } from './address/address.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
   },
   {
     path: 'register',

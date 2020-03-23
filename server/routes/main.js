@@ -9,7 +9,7 @@ router
       res.json({
         success: true,
         message: 'Successfully got all categories',
-        category: categories
+        categories: categories
       });
     })
   })
