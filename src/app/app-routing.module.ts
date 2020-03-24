@@ -1,3 +1,4 @@
+import { PostProductComponent } from './post-product/post-product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AddressComponent } from './address/address.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'profile/address',
     component: AddressComponent,
+    canActivate: [AuthGaurdService]
+  },
+  {
+    path: 'profile/postproduct',
+    component: PostProductComponent,
     canActivate: [AuthGaurdService]
   },
   {
