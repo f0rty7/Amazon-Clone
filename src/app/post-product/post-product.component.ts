@@ -89,7 +89,10 @@ export class PostProductComponent implements OnInit {
         let postProductUrl = "http://localhost:4000/api/seller/products";
         const data = await this.apiService.post(postProductUrl, form);
         data["success"]
-          ? this.data.success(data["message"])
+          ? this.router
+              .navigate(["/profile/myproducts"])
+              .then(() => this.data.success(data["message"]))
+              .catch(() => this.data.error(data["message"]))
           : this.data.error(data["message"]);
       }
     } catch (error) {

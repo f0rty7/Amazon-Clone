@@ -1,3 +1,4 @@
+import { MyProductsComponent } from './my-products/my-products.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AddressComponent } from './address/address.component';
@@ -49,6 +50,11 @@ const routes: Routes = [
   {
     path: 'profile/postproduct',
     component: PostProductComponent,
+    canActivate: [AuthGaurdService]
+  },
+  {
+    path: 'profile/myproducts',
+    component: MyProductsComponent,
     canActivate: [AuthGaurdService]
   },
   {
