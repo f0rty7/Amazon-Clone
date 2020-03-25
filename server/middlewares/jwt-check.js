@@ -12,7 +12,8 @@ module.exports = function(req, res, next) {
       // checking the token expiry...if error below code runs
       if (error) {
         console.log("********************ERROR IS*********************");
-        console.log(error);
+        console.log(error.name);
+        console.log(error.message);
         res.json({
           success: false,
           message: "Failed to authenticate token"
