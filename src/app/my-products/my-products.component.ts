@@ -25,7 +25,6 @@ export class MyProductsComponent implements OnInit {
       data["message"]
         ? (this.products = data["products"])
         : this.data.error(data["message"]);
-        console.log("Products 1", this.products);
     } catch (error) {
       this.dataService.error(error["message"]);
     }
