@@ -16,10 +16,11 @@
               <small class="text-muted">Price</small>
             </p>
           </div>
+        </div>
           <hr class="mt-0">
           <div *ngFor="let product of products" class="product">
             <div class="row">
-              <div class="col-4 md-2">
+              <div class="col-4 col-md-2">
                 <a routerLink="/product/{{ product.id }}">
                   <img src="{{ product.image }}" class="img-fluid img-thumbnail">
                 </a>
@@ -33,12 +34,12 @@
                 </h5>
               </div>
               <div class="col-2">
-                <h6 class="font-weight-bold text-danger">{{ product.price | currency: "IN" }}</h6>
+                <h6 class="font-weight-bold text-danger">{{ product.price | currency: "INR" }}</h6>
               </div>
             </div>
+            <hr>
           </div>
         </div>
       </div>
-    </div>
   </div>
 </section>
