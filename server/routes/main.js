@@ -25,19 +25,19 @@ router
     });
   });
 
-router.get("/categories/:id", (req, res, next) => {
+router.get("/products", (req, res, next) => {
   const perPage = 10;
   const page = req.query.page;
 
   async.parallel([
     function(callback) {
-      Product.countDocuments({ category: req.params.id }, (error, count) => {
+      Product.countDocuments({}, (error, count) => {
         let totalProducts = count;
         callback(error, totalProducts);
       });
     },
     function(callback) {
-      Product.find({ category: req.params.id })
+      Product.find({})
         .skip(perPage * page)
         .limit(perPage)
         .populate("category")
@@ -47,21 +47,21 @@ router.get("/categories/:id", (req, res, next) => {
           callback(error, products);
         });
     },
-    function(callback) {
-      Category.findOne({ _id: req.params.id }, (error, category) => {
-        callback(error, category);
-      });
-    },
+    // function(callback) {
+    //   Category.findOne({ _id: req.params.id }, (error, category) => {
+    //     callback(error, category);
+    //   });
+    // },
   ],
   function(error, results) {
     var totalProducts = results[0];
     var products = results[1];
-    var category = results[2];
+    // var category = results[2];
     res.json({
       success: true,
       message: "10 items per category found",
       products: products,
-      categoryName: category.name,
+      // categoryName: category.name,
       totalProducts: totalProducts,
       pages: Math.ceil(totalProducts / perPage)
     });
