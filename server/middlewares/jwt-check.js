@@ -11,9 +11,15 @@ module.exports = function(req, res, next) {
     jwt.verify(token, config.secret, function(error, decoded) {
       // checking the token expiry...if error below code runs
       if (error) {
+        console.log();
+        console.log("*************************************************");
         console.log("********************ERROR IS*********************");
+        console.log("*************************************************");
         console.log(error.name);
         console.log(error.message);
+        console.log("*************************************************");
+        console.log("*************************************************");
+        console.log();
         res.json({
           success: false,
           message: "Failed to authenticate token"
