@@ -1,12 +1,15 @@
 const router = require("express").Router();
 const Category = require("../models/category");
 const Product = require("../models/product");
+const Review = require("../models/review");
+const checkJWT = require("../middlewares/jwt-check");
 const async = require("async");
 
 // Categories api
 router
   .route("/categories")
   .get((req, res, next) => {
+    console.log(req.body);
     Category.find({}, (err, categories) => {
       res.json({
         success: true,
@@ -16,6 +19,7 @@ router
     });
   })
   .post((req, res, next) => {
+    console.log(req.body);
     let category = new Category();
     category.name = req.body.category;
     category.save();
@@ -26,6 +30,7 @@ router
   });
 
 router.get("/products", (req, res, next) => {
+  console.log(req.body);
   const perPage = 10;
   const page = req.query.page;
 
@@ -69,6 +74,7 @@ router.get("/products", (req, res, next) => {
 });
 
 router.get('/categories/:id', (req,res,next)=>{
+  console.log(req.body);
   const perPage = 10;
   const page = req.query.page ;
   async.parallel([
@@ -111,6 +117,7 @@ router.get('/categories/:id', (req,res,next)=>{
 });
 
 router.get('/product/:id', ( req, res, next) => {
+  console.log(req.body);
   Product.findById({ _id : req.params.id})
   .populate("category")
   .populate("owner")
@@ -131,6 +138,34 @@ router.get('/product/:id', ( req, res, next) => {
       }
     }
   });
-})
+});
+
+router.post('/review', checkJWT, (req,res,next)=>{
+  console.log(req.body);
+  async.waterfall([
+      function(callback) {
+          Product.findOne({ _id: req.body.productId }, (error, product) => {
+              if (product) {
+                  callback(error, product);
+              }
+          });
+      },
+      function(product) {
+          let review = new Review();
+          review.owner = req.decoded.user._id;
+          if (req.body.title) review.title = req.body.title;
+          if (req.body.description) review.description = req.body.description ;
+          if(req.body.rating) review.rating = req.body.rating;
+
+          product.reviews.push(review._id);
+          product.save();
+          review.save();
+          res.json({
+              success: true,
+              message: 'Successfully added the review'
+          });
+      }
+  ]);
+});
 
 module.exports = router;
