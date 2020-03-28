@@ -37,5 +37,9 @@ export class AppComponent {
 
   search() {
     console.log("Search button clicked");
+    if( this.searchTerm) {
+      this.collapse();
+      this.router.navigate(['search', { query: this.searchTerm }]);
+    }
   }
 }
