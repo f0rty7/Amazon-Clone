@@ -11,6 +11,14 @@ import { Component, OnInit } from "@angular/core";
 export class ProductComponent implements OnInit {
   product: any;
 
+  myReview = {
+    title: "",
+    description: "",
+    rating: 0
+  };
+
+  btnDisabled = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -22,7 +30,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(result => {
-      const productUrl = `http://localhost:4000/api/product/${result["id"]}` ;
+      const productUrl = `http://localhost:4000/api/product/${result["id"]}`;
       this.apiService
         .get(productUrl)
         .then(data => {
@@ -32,5 +40,24 @@ export class ProductComponent implements OnInit {
         })
         .catch(error => this.data.error(error["message"]));
     });
+  }
+
+  async postReview() {
+    this.btnDisabled = true;
+    let reviewUrl = "http://localhost:4000/api/review";
+    try {
+      const data = await this.apiService.post(reviewUrl, {
+        productId: this.product._id,
+        title: this.myReview.title,
+        description: this.myReview.description,
+        rating: this.myReview.rating
+      });
+      data["success"]
+        ? this.data.success(data["message"])
+        : this.data.error(data["message"]);
+    } catch (error) {
+      this.data.error(error["message"]);
+    }
+    this.btnDisabled = false;
   }
 }

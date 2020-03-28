@@ -30,7 +30,9 @@
                 </p>
                 <p>{{product.price | currency: 'INR'}}</p>
               </div>
-              <div class="col-md-6"></div>
+              <div class="col-md-6">
+                <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+              </div>
             </div>
           </div>
         </div>
@@ -40,3 +42,11 @@
     </div>
   </div>
 </section>
+
+<ng-template #t let-fill="fill">
+  <span *ngIf="fill === 100" class="star full">&#9733;</span>
+  <span *ngIf="fill === 0" class="star">&#9733;</span>
+  <span *ngIf="fill < 100 && fill > 0" class="star">
+    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+  </span>
+</ng-template>
