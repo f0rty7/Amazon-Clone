@@ -2,6 +2,7 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
+const Order = require("../models/order");
 const config = require("../config");
 const checkJwt = require("../middlewares/jwt-check");
 
@@ -147,5 +148,45 @@ router
       });
     });
   });
+
+router.get("/orders", checkJwt, (req, res) => {
+  Order.find({ owner: req.decoded.user._id })
+    .populate("products.product")
+    .populate("owner")
+    .exec((error, orders) => {
+      if (error) {
+        res.json({
+          success: false,
+          message: "Couldn't find your order"
+        });
+      } else {
+        res.json({
+          success: true,
+          message: "Your orders found",
+          orders: orders
+        });
+      }
+    });
+});
+
+router.get("/orders/:id", checkJwt, (req, res) => {
+  Order.findById(req.params.id)
+    .deepPopulate("products.product.owner")
+    .populate("owner")
+    .exec((error, order) => {
+      if (error) {
+        res.json({
+          success: false,
+          message: "Couldn't find your order"
+        });
+      } else {
+        res.json({
+          success: true,
+          message: "Your orders",
+          order: order
+        });
+      }
+    });
+});
 
 module.exports = router;

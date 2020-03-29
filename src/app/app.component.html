@@ -40,10 +40,11 @@
             </div>
           </li>
           <li class="nav-item ml-0 ml-md-2">
-            <a class="nav-link" (click)="collapse()" routerLink="/cart" routerLinkActive="true"></a>
-            <i class="fa fa-shopping-cart mr-1"></i>
-            Cart
-            <span *ngIf="data.cartItems" class="badge badge-warning ml-1">{{ data.cartItems }}</span>
+            <a class="nav-link" (click)="collapse()" routerLink="/cart" routerLinkActive="true">
+              <i class="fa fa-shopping-cart mr-1"></i>
+              Cart
+              <span *ngIf="data.cartItems" class="badge badge-warning ml-1">{{ data.cartItems }}</span>
+            </a>
           </li>
         </ul>
       </div>
