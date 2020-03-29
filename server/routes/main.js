@@ -194,10 +194,10 @@ router.post("/payment", checkJWT, (req, res, next) => {
       const products = req.body.products;
 
       let order = new Order();
-      order.owner = req.dcoded.user._id;
+      order.owner = req.decoded.user._id;
       order.totalPrice = currentCharges;
 
-      product.map(product => {
+      products.map(product => {
         order.products.push({
           product: product.product,
           quantity: product.quantity
