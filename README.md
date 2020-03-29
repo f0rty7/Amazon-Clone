@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Installation steps :-
 
-1. cd Webshoppe/ && npm install
-2. cd Webshopee/server && npm install
-3. cd Webshopee/server && nodemon
-4. cd Webshopee && ng serve
+1. cd Amazon-Clone/ && npm install
+2. cd Amazon-Clone/server && npm install
+3. cd Amazon-Clone/server && nodemon
+4. cd Amazon-Clone && ng serve
