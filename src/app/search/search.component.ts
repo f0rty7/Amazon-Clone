@@ -30,24 +30,26 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  get lower() {
-    return 1 + this.content.hitsPerPage * this.content.page;
-  }
+  // get lower() {
+  //   return 1 + this.content.hitsPerPage * this.content.page;
+  // }
 
-  get upper() {
-    return Math.min(
-      this.content.hitsPerPage * ( this.content.page * 1),
-      this.content.nbHits
-    );
-  }
+  // get upper() {
+  //   return Math.min(
+  //     this.content.hitsPerPage * ( this.content.page * 1),
+  //     this.content.nbHits
+  //   );
+  // }
 
   async getProducts() {
     this.content = null;
-    let searchUrl = `http://localhost:4000/api/search?query=${this.query}&page=${this.page - 1}`;
+    let searchUrl = `http://localhost:4000/api/search?searchProduct=${this.query}&page=${this.page - 1}`;
     try {
       const data = await this.restApiService.get(searchUrl);
+      console.log("SEARCH DATA", data);
       data['success']
-      ? ( this.content = data['content'])
+      // ? ( this.content = data['product'])
+      ? ( this.content = data)
       : ( this.data.error(data['error']));
     } catch (error) {
       this.data.error(error["message"]);

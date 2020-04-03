@@ -6,16 +6,16 @@
         <i class="fa fa-spinner fa-spin"></i>
       </h1>
     </div>
-    <h3 *ngIf="content && !content.nbHits" class="display-2 text-center mt-5">No Results</h3>
-    <div *ngIf="content && content.nbHits">
-      <p>{{ lower }} - {{ upper }} of {{ content.nbHits }} results for
+    <h3 *ngIf="content && content.product.length == 0" class="display-2 text-center mt-5">No Results</h3>
+    <div *ngIf="content && content.product">
+      <!-- <p>{{ lower }} - {{ upper }} of {{ content.product }} results for
         <span class="text-warning">"{{ query }}"</span>
-      </p>
+      </p> -->
       <hr>
-      <div class="product" *ngFor="let product of content.hits">
+      <div class="product" *ngFor="let product of content.product">
         <div class="row">
           <div class="col-5 col-md-2">
-            <a routerLink="/product/{{ product.objectID }}">
+            <a routerLink="/product/{{ product._id }}">
               <img [src]="product.image" alt="productImage" class="img-fluid img-thumbnail">
             </a>
           </div>
@@ -23,7 +23,7 @@
             <div class="row">
               <div class="col-12 col-md-6">
                 <h5>
-                  <a routerLink="/product/{{ product.objectID }}">{{ product.title }}</a>
+                  <a routerLink="/product/{{ product._id }}">{{ product.title }}</a>
                 </h5>
                 <p>
                   <small>by {{ product.owner.name }}</small>
@@ -38,7 +38,7 @@
         </div>
         <hr>
       </div>
-      <ngb-pagination [collectionSize]="content.nbHits" [pageSize]="20" [(page)]="page" (pageChange)="getProducts()" ></ngb-pagination>
+      <ngb-pagination [collectionSize]="content.product.length" [pageSize]="10" [(page)]="page" (pageChange)="getProducts()"></ngb-pagination>
     </div>
   </div>
 </section>

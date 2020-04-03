@@ -26,8 +26,8 @@ const Product = require("../models/product");
 
 router.get("/", (req, res) => {
   console.log(req.body);
-  let name = req.query.name;
-  var regex = new RegExp(`${name}`, 'i');
+  let name = req.query.searchProduct;
+  var regex = new RegExp(`${name}`, "i");
   if (!name) {
     return res.json({
       success: false,
@@ -35,38 +35,24 @@ router.get("/", (req, res) => {
     });
   }
   Product.find({ title: regex })
-
-  // Product.find(
-  //   {name: { $regex: `${name}`, $options: 'i'}},
-  //   "title description price image",
-  //   (err, result) => {
-  //     if( !err && result){
-  //       res.json({
-  //         product: result
-  //       })
-  //     }
-  //   }
-  //   );
-
-    // .populate("owner")
-    // .populate("category")
-    // .populate("reviews")
-    .exec((error, products) => {
-      if (error) {
+  // .populate("category")
+  .populate("reviews")
+  .exec((error, products) => {
+    if (error) {
+      res.json({
+        success: false,
+        message: "Product not found la"
+      });
+    } else {
+      if (products) {
         res.json({
-          success: false,
-          message: "Product not found la"
+          success: true,
+          message: "Search completed successfully",
+          product: products
         });
-      } else {
-        if (products) {
-          res.json({
-            success: true,
-            message: "Search completed successfully",
-            product: products
-          });
-        }
       }
-    });
+    }
+  });
 });
 
 module.exports = router;
