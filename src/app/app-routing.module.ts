@@ -1,3 +1,4 @@
+import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { SearchComponent } from './search/search.component';
 import { ProductComponent } from './product/product.component';
@@ -75,6 +76,11 @@ const routes: Routes = [
   {
     path: 'profile/myproducts',
     component: MyProductsComponent,
+    canActivate: [AuthGaurdService]
+  },
+  {
+    path: 'profile/orders',
+    component: OrdersComponent,
     canActivate: [AuthGaurdService]
   },
   {

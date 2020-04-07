@@ -35,7 +35,10 @@
             <label class="form-control-label">Upload Image</label>
             <input type="file" name="file" class="form-control-file" accept="image/*"  [(ngModel)]="product.product_picture" (change)="fileChange($event)">
           </div>
-          <button class="btn btn-danger" (click)="postProduct()" [disabled]="btnDisabled">Post Product</button>
+          <div>
+            <button class="btn btn-info" routerLink="/profile">Back</button>
+          <button class="btn btn-danger" (click)="postProduct()" [disabled]="btnDisabled" style="margin-left: 1rem">Post Product</button>
+          </div>
         </form>
       </div>
     </div>

@@ -186,7 +186,7 @@ router.post("/payment", checkJWT, (req, res, next) => {
     ) =>
       stripe.charges.create({
         amount: currentCharges * 100,
-        currency: "inr",
+        currency: "usd",
         customer: customer.id
       })
     )

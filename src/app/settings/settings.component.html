@@ -32,7 +32,10 @@
             <label class="form-control-label">Confirm Password</label>
             <input type="password" name="pwdConfirm" class="form-control" [(ngModel)]="currentSettings.pwdConfirm">
           </div>
-          <button class="btn btn-danger" (click)="update()" [disabled]="btnDisabled">Update</button>
+          <div>
+            <button class="btn btn-info" routerLink="/profile">Back</button>
+            <button class="btn btn-danger" (click)="update()" [disabled]="btnDisabled" style="margin-left: 1rem;">Update</button>
+          </div>
         </form>
       </div>
     </div>
