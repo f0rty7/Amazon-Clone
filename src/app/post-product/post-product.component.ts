@@ -64,9 +64,9 @@ export class PostProductComponent implements OnInit {
     }
   }
 
-  fileChange(event) {
-    this.product.product_picture = event.target.files[0];
-  }
+  // fileChange(event) {
+  //   this.product.product_picture = event.target.files[0];
+  // }
 
   async postProduct() {
     this.btnDisabled = true;

@@ -47,6 +47,9 @@ app.use("/api", mainRoutes);
 app.use("/api/search", productSearchRoutes);
 app.use("/api/accounts", userRoutes);
 app.use("/api/seller", sellerRoutes);
+app.get("/", function(req, res, next){
+  res.send(JSON.stringify(`Helloooo!!! there you've reached backend. Server is online!!!`))
+})
 
 app.listen(port, () => {
   console.log("Server running on port ==> " + port);
