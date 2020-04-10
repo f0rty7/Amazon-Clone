@@ -9,12 +9,58 @@
       <div class="row">
         <div class="col-md-6">
           <div class="container">
-            <div *ngFor="let product of products" style="display: flex;justify-content: center">
+            <div *ngFor="let product of products">
+            <!-- <div *ngFor="let product of products" style="display: flex;justify-content: center"> -->
+              <a routerLink="/product/{{ product.product._id }}">
+                <div class="card" style="width: 15rem;">
+                  <img src="{{product.product.image}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{product.product.title}} X {{product.quantity}}</h5>
+                    <p class="card-text">{{product.product.price | currency: 'USD'}}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="container">
+            <h3>Delivery details</h3>
+          <div class="card" *ngFor="let own of owner">
+            <div class="card-body">
+              <h5 class="card-title">{{owner['0'].name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Address</h6>
+              <p class="card-text">{{owner['0'].address.address1}}</p>
+              <p class="card-text">{{owner['0'].address.address2}}</p>
+              <p class="card-text">{{owner['0'].address.city}}</p>
+              <p class="card-text">{{owner['0'].address.state}}</p>
+              <p class="card-text">{{owner['0'].address.postalCode}}</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<!-- <section id="cart">
+  <div class="container-fluid p-5">
+    <app-message></app-message>
+    <h3 *ngIf="!orders" class="display-2 text-center mt-5">You have no orders yet</h3>
+    <div class="card">
+      <h2 class="card-header">
+        Your orders
+      </h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="container">
+            <div *ngFor="let product of orders" style="display: flex;justify-content: center">
               <div class="card" style="width: 12rem;">
-                <img src="{{product.product.image}}" class="card-img-top" alt="...">
+                <img src="{{product.products['0'].product.image}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{product.product.title}} X {{product.quantity}}</h5>
-                  <p class="card-text">{{product.product.price | currency: 'USD'}}</p>
+                  <h5 class="card-title">{{product.products['0'].product.title}} X {{product.products['0'].quantity}}</h5>
+                  <p class="card-text">{{product.products['0'].product.price | currency: 'USD'}}</p>
                 </div>
               </div>
             </div>
@@ -39,4 +85,4 @@
       </div>
     </div>
     </div>
-</section>
+</section> -->
